@@ -10,13 +10,6 @@ use Throwable;
 
 class ReplicateException extends Exception
 {
-    /**
-     * Creates a new Exception instance.
-     *
-     * @param $message
-     * @param $code
-     * @param Throwable|null $previous
-     */
     public function __construct($message = "", $code = 0, Throwable $previous = null)
     {
         if (!($previous instanceof Throwable)) {

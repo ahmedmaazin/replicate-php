@@ -16,6 +16,13 @@ class Predictions
     {
     }
 
+    /**
+     * Map the response from the API to a Predictions object.
+     *
+     * @param array $response
+     *
+     * @return static
+     */
     public static function fromApiResponse(array $response): self
     {
         $predictions = [];

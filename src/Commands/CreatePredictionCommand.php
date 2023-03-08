@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace Mazin\Replicate\Commands;
 
-use DateTimeImmutable;
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
 use Mazin\Replicate\Exceptions\ReplicateException;
@@ -22,11 +21,12 @@ class CreatePredictionCommand
     }
 
     /**
-     * Handle the command.
+     * Create a prediction.
      *
      * @param string $version
      * @param array $input
      * @param array|null $webhookConfig
+     *
      * @return Prediction
      * @throws ReplicateException
      * @throws ReplicateWebhookInputException
@@ -70,7 +70,7 @@ class CreatePredictionCommand
             'input' => $input
         ];
 
-        if ($webhookConfig !== null) {
+        if (null !== $webhookConfig) {
             $webhookValidator = new ReplicateWebhookValidator();
             $validWebhookConfig = $webhookValidator->validate($webhookConfig);
 

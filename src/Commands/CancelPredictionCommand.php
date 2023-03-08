@@ -19,6 +19,11 @@ class CancelPredictionCommand
     }
 
     /**
+     * Cancel a prediction.
+     *
+     * @param string $predictionId
+     *
+     * @return Prediction
      * @throws ReplicateException
      * @throws ResponseException
      */

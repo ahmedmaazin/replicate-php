@@ -19,6 +19,11 @@ class GetPredictionCommand
     }
 
     /**
+     * Get a prediction.
+     *
+     * @param string $predictionId
+     *
+     * @return Prediction
      * @throws ReplicateException
      * @throws ResponseException
      */

@@ -9,6 +9,13 @@ use Mazin\Replicate\Model\Prediction;
 
 class PredictionMapper
 {
+    /**
+     * Map the response from the API to a Prediction object.
+     *
+     * @param array $data
+     *
+     * @return Prediction
+     */
     public function map(array $data): Prediction
     {
         return new Prediction(

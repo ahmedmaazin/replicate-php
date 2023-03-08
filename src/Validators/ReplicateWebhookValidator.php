@@ -12,6 +12,7 @@ class ReplicateWebhookValidator
      * Validates webhook config and it's key values.
      *
      * @param array $input
+     *
      * @return array
      * @throws ReplicateWebhookInputException
      */
@@ -32,6 +33,7 @@ class ReplicateWebhookValidator
      * Validates webhook config.
      *
      * @param array $input
+     *
      * @return array
      * @throws ReplicateWebhookInputException
      */
@@ -58,6 +60,7 @@ class ReplicateWebhookValidator
      * Validates webhook url.
      *
      * @param string $url
+     *
      * @return void
      * @throws ReplicateWebhookInputException
      */
@@ -72,6 +75,7 @@ class ReplicateWebhookValidator
      * Validates webhook event filters.
      *
      * @param array $filters
+     *
      * @return void
      * @throws ReplicateWebhookInputException
      */

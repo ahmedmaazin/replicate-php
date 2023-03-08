@@ -35,6 +35,7 @@ class Example
         } catch (ReplicateException|ResponseException $e) {
         }
     }
+
     public function examplePredictions(): void
     {
         $replicate = new Replicate('token');
@@ -58,7 +59,9 @@ class Example
         $replicate = new Replicate('token');
 
         try {
-            $replicate->cancelPrediction('prediction-id');
+            $response = $replicate->cancelPrediction('prediction-id');
+
+            echo $response->status;
         } catch (ReplicateException|ResponseException $e) {
         }
     }
