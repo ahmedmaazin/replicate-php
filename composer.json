@@ -3,7 +3,6 @@
   "description": "This is a PHP client for Replicate.",
   "type": "client-library",
   "license": "MIT",
-  "version": "0.0.1",
   "keywords": [
     "replicate",
     "machine learning",
