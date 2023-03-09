@@ -18,8 +18,6 @@ class ExampleService
 
     public function exampleCreateAPrediction(): void
     {
-        $this->replicate = new Replicate('token');
-
         try {
             $prediction = $this->replicate->createPrediction(
                 version: 'v1',

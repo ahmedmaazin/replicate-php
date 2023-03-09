@@ -14,7 +14,6 @@ class ReplicateWebhookValidatorTest extends TestCase
     {
         $validator = new ReplicateWebhookValidator();
 
-        // Test valid input
         $input = [
             'webhook' => 'https://example.com',
             'webhook_events_filter' => ['start', 'output', 'logs', 'completed']
