@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mazin\Replicate\Tests\Model;
 
 use Mazin\Replicate\Model\Prediction;
@@ -9,7 +11,7 @@ use PHPUnit\Framework\TestCase;
 
 class PredictionsTest extends TestCase
 {
-    public function testFromApiResponse(): void
+    public function test_from_api_response_sets_proper_data(): void
     {
         $response = PredictionsDataFixture::get();
 

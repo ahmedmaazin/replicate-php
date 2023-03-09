@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mazin\Replicate\Tests\Commands;
 
 use DateTimeImmutable;
@@ -11,7 +13,7 @@ use PHPUnit\Framework\TestCase;
 
 class GetPredictionCommandTest extends TestCase
 {
-    public function testGetPredictionCommand(): void
+    public function test_get_prediction_command(): void
     {
         $responseBody = json_encode(PredictionDataFixture::get(), JSON_THROW_ON_ERROR);
 

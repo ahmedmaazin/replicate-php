@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Mazin\Replicate\Tests\Fixtures;
 
 final class PredictionsDataFixture

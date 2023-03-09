@@ -18,7 +18,7 @@ class PredictionMapperTest extends TestCase
         $this->predictionMapper = new PredictionMapper();
     }
 
-    public function testMap(): void
+    public function test_map_maps_properly(): void
     {
         $data = PredictionDataFixture::get();
 
