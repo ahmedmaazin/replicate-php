@@ -44,7 +44,7 @@ try {
 
 ```php
 try {
-    $prediction = $this->replicate->prediction('prediction-id');
+    $prediction = $this->replicate->prediction(predictionId: 'prediction-id');
 
     echo $prediction->id;
 } catch (ReplicateException|ResponseException $e) {
@@ -67,7 +67,8 @@ try {
         parse_str($query, $params);
         $cursor = $params['cursor'];
         
-        $predictions = $this->replicate->predictions($cursor);
+        $predictions = $this->replicate->predictions(cursor: $cursor);
+        // $predictions->results;
     }
     
     // take a look at the Predictions data class for available fields.
@@ -80,7 +81,7 @@ try {
 
 ```php
 try {
-    $response = $this->replicate->cancelPrediction('prediction-id');
+    $response = $this->replicate->cancelPrediction(predictionId: 'prediction-id');
 
     echo $response->status;
 } catch (ReplicateException|ResponseException $e) {

@@ -13,7 +13,7 @@ class ExampleService
 
     public function __construct()
     {
-        $this->replicate = new Replicate('token');
+        $this->replicate = new Replicate(apiToken: 'api-token');
     }
 
     public function exampleCreateAPrediction(): void
@@ -32,7 +32,7 @@ class ExampleService
     public function exampleGetAPrediction(): void
     {
         try {
-            $prediction = $this->replicate->prediction('prediction-id');
+            $prediction = $this->replicate->prediction(predictionId: 'prediction-id');
 
             echo $prediction->id;
         } catch (ReplicateException|ResponseException $e) {
@@ -50,7 +50,8 @@ class ExampleService
                 $query = parse_url($nextUrl, PHP_URL_QUERY);
                 parse_str($query, $params);
                 $cursor = $params['cursor'];
-                $predictions = $this->replicate->predictions($cursor);
+                $predictions = $this->replicate->predictions(cursor: $cursor);
+                // $predictions->results;
             }
         } catch (ReplicateException|ResponseException $e) {
         }
@@ -59,7 +60,7 @@ class ExampleService
     public function exampleCancelAPrediction(): void
     {
         try {
-            $response = $this->replicate->cancelPrediction('prediction-id');
+            $response = $this->replicate->cancelPrediction(predictionId: 'prediction-id');
 
             echo $response->status;
         } catch (ReplicateException|ResponseException $e) {
