@@ -20,8 +20,8 @@ class ReplicateWebhookValidator
     {
         $filteredWebhookConfig = $this->validateWebhookConfig($input);
 
-        $this->validateWebhookUrl($filteredWebhookConfig['webhook']);
-        $this->validateWebhookEventFilters($filteredWebhookConfig['webhook_events_filter']);
+        $this->validateWebhookUrl($filteredWebhookConfig['webhook'] ?? []);
+        $this->validateWebhookEventFilters($filteredWebhookConfig['webhook_events_filter'] ?? null);
 
         return [
             'webhook' => $filteredWebhookConfig['webhook'],
@@ -74,13 +74,17 @@ class ReplicateWebhookValidator
     /**
      * Validates webhook event filters.
      *
-     * @param array $filters
+     * @param array|null $filters
      *
      * @return void
      * @throws ReplicateWebhookInputException
      */
-    private function validateWebhookEventFilters(array $filters): void
+    private function validateWebhookEventFilters(?array $filters): void
     {
+        if (null === $filters) {
+            throw new ReplicateWebhookInputException('Empty webhook event filter provided');
+        }
+
         $allowedWebhookEventFilters = ['start', 'output', 'logs', 'completed'];
         $disallowedWebhookEventFilters = array_diff($filters, $allowedWebhookEventFilters);
 
