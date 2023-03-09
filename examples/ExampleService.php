@@ -7,16 +7,23 @@ use Mazin\Replicate\Exceptions\ReplicateWebhookInputException;
 use Mazin\Replicate\Exceptions\ResponseException;
 use Mazin\Replicate\Replicate;
 
-class Example
+class ExampleService
 {
+    private Replicate $replicate;
+
+    public function __construct()
+    {
+        $this->replicate = new Replicate('token');
+    }
+
     public function exampleCreateAPrediction(): void
     {
-        $replicate = new Replicate('token');
+        $this->replicate = new Replicate('token');
 
         try {
-            $prediction = $replicate->createPrediction(
+            $prediction = $this->replicate->createPrediction(
                 version: 'v1',
-                input: ['foo' => 'bar'],
+                input: ['text' => 'foo'],
             );
 
             echo $prediction->id;
@@ -26,10 +33,8 @@ class Example
 
     public function exampleGetAPrediction(): void
     {
-        $replicate = new Replicate('token');
-
         try {
-            $prediction = $replicate->prediction('prediction-id');
+            $prediction = $this->replicate->prediction('prediction-id');
 
             echo $prediction->id;
         } catch (ReplicateException|ResponseException $e) {
@@ -38,17 +43,16 @@ class Example
 
     public function examplePredictions(): void
     {
-        $replicate = new Replicate('token');
-
         try {
-            $predictions = $replicate->predictions();
+            $predictions = $this->replicate->predictions();
 
+            // if you would like to paginate.
             if ($predictions->next) {
                 $nextUrl = $predictions->next;
                 $query = parse_url($nextUrl, PHP_URL_QUERY);
                 parse_str($query, $params);
                 $cursor = $params['cursor'];
-                $predictions = $replicate->predictions($cursor);
+                $predictions = $this->replicate->predictions($cursor);
             }
         } catch (ReplicateException|ResponseException $e) {
         }
@@ -56,10 +60,8 @@ class Example
 
     public function exampleCancelAPrediction(): void
     {
-        $replicate = new Replicate('token');
-
         try {
-            $response = $replicate->cancelPrediction('prediction-id');
+            $response = $this->replicate->cancelPrediction('prediction-id');
 
             echo $response->status;
         } catch (ReplicateException|ResponseException $e) {
